@@ -31,7 +31,7 @@ const Login = () => {
   const handleGoogleSignIn = async () => {
     try {
       await signInWithGoogle(); // Call the signInWithGoogle function to log in with Google
-      window.location.href = '/MainPage'; // Redirect the user to the dashboard page
+      window.location.href = "/MainPage"; // Redirect the user to the dashboard page
     } catch (error) {
       console.log(error);
     }
@@ -100,7 +100,7 @@ const Login = () => {
                   whileHover={{ scale: 1.03, transition: { duration: 0.1 } }}
                   whileTap={{ scale: 1 }}
                   class="w-full bg-white py-3 text-center text-[#9fa0ff] rounded-lg font-semibold"
-                  onClick={() => handleLogin()``}
+                  onClick={() => handleLogin()}
                 >
                   Log In
                 </motion.button>

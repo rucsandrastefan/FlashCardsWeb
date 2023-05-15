@@ -29,7 +29,7 @@ const Carousel = () => {
     },
   };
   return (
-    <div className="flex ml-8 mr-8 mt-16 justify-center ">
+    <div className="flex ml-8 mr-8 mt-8 justify-center ">
       <Slider {...settings} className="flex w-4/5 justify-center space-x-4 color-black">
         <div className="flex justify-center bg-[#9fa0ff] py-8 rounded-xl hover:bg-[#babbff] border-x-4  ">
           <Link to="/Boards">

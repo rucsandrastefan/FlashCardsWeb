@@ -1,12 +1,12 @@
-import React from 'react'
-import NavbarA from './components/NavbarA'
+import React from "react";
+import Navbar from "./components/Navbar";
 
 const SavedCards = () => {
   return (
     <div>
-    <NavbarA></NavbarA>
+      <Navbar></Navbar>
     </div>
-  )
-}
+  );
+};
 
-export default SavedCards
+export default SavedCards;

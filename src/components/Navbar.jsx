@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { NavLink, Link } from "react-router-dom";
+import { auth } from "../lib/firebase";
 const Navbar = () => {
+  const [user] = useAuthState(auth);
   const [nav, setNav] = useState(false);
 
   const handleNav = () => {
@@ -12,27 +15,48 @@ const Navbar = () => {
     <nav>
       <div className="flex justify-between items-center w-full mx-auto px-4 text-[#9fa0ff] bg-white">
         <h1 className="w-full text-5xl font-bold text-[#020202]">Memo.</h1>
-        <ul className="hidden md:flex md:gap-4 md:flex-nowrap">
+        <ul className="hidden md:flex md:items-center md:gap-4 md:flex-nowrap">
           <li className="text-xl font-semibold">
-            <Link to="/" exact>
-              Home
-            </Link>
+            <Link to="/">Home</Link>
           </li>
-          <li className="text-xl font-semibold">
-            <Link to="/Login" exact>
-              Log In
-            </Link>
-          </li>
-          <li className="text-xl font-semibold">
-            <Link to="/About" exact>
-              About
-            </Link>
-          </li>
-          <li className="text-xl font-semibold">
-            <Link to="/Contact" exact>
-              Contact
-            </Link>
-          </li>
+          {!user && (
+            <>
+              <li className="text-xl font-semibold">
+                <Link to="/Login">
+                  Log In
+                </Link>
+              </li>
+              <li className="text-xl font-semibold">
+                <Link to="/About">
+                  About
+                </Link>
+              </li>
+              <li className="text-xl font-semibold">
+                <Link to="/Contact">
+                  Contact
+                </Link>
+              </li>
+            </>
+          )}
+          {user && (
+            <>
+              <li className="p-4 text-xl font-semibold">
+                <NavLink to="/Boards">
+                  Boards
+                </NavLink>
+              </li>
+              <li className="p-4 text-xl font-semibold">
+                <NavLink to="/Profile">
+                  Profile
+                </NavLink>
+              </li>
+              <li className="p-4 text-xl font-semibold">
+                <NavLink to="/Settings">
+                  Settings
+                </NavLink>
+              </li>
+            </>
+          )}
         </ul>
         <div onClick={handleNav} className="block md:hidden">
           {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
