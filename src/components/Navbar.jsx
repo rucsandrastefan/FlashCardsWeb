@@ -12,48 +12,35 @@ const Navbar = () => {
   };
 
   return (
-    <nav>
+    <nav className="sticky top-0 z-[100]">
       <div className="flex justify-between items-center w-full mx-auto px-4 text-[#9fa0ff] bg-white">
-        <h1 className="w-full text-5xl font-bold text-[#020202]">Memo.</h1>
+        <h1 className="text-5xl font-bold text-[#020202]">Memo.</h1>
         <ul className="hidden md:flex md:items-center md:gap-4 md:flex-nowrap">
-          <li className="text-xl font-semibold">
+          <li className="p-4 text-xl font-semibold">
             <Link to="/">Home</Link>
           </li>
-          {!user && (
+          {user ? (
             <>
-              <li className="text-xl font-semibold">
-                <Link to="/Login">
-                  Log In
-                </Link>
+              <li className="p-4 text-xl font-semibold">
+                <NavLink to="/Boards">Boards</NavLink>
               </li>
-              <li className="text-xl font-semibold">
-                <Link to="/About">
-                  About
-                </Link>
+              <li className="p-4 text-xl font-semibold">
+                <NavLink to="/Profile">Profile</NavLink>
               </li>
-              <li className="text-xl font-semibold">
-                <Link to="/Contact">
-                  Contact
-                </Link>
+              <li className="p-4 text-xl font-semibold">
+                <NavLink to="/Settings">Settings</NavLink>
               </li>
             </>
-          )}
-          {user && (
+          ) : (
             <>
               <li className="p-4 text-xl font-semibold">
-                <NavLink to="/Boards">
-                  Boards
-                </NavLink>
+                <Link to="/Login">Log In</Link>
+              </li>
+              <li className=" p-4 text-xl font-semibold">
+                <Link to="/About">About</Link>
               </li>
               <li className="p-4 text-xl font-semibold">
-                <NavLink to="/Profile">
-                  Profile
-                </NavLink>
-              </li>
-              <li className="p-4 text-xl font-semibold">
-                <NavLink to="/Settings">
-                  Settings
-                </NavLink>
+                <Link to="/Contact">Contact</Link>
               </li>
             </>
           )}

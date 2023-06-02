@@ -20,6 +20,7 @@ import MoviesComponent from "./components/MoviesComponent";
 import LiteratureComponent from "./components/LiteratureComponent";
 import MedComponent from "./components/MedComponent";
 import Category from "./Category";
+import Discover from "./components/Discover";
 
 function App() {
   const [user] = useAuthState(auth);
@@ -67,6 +68,7 @@ function App() {
             element={<LiteratureComponent />}
           ></Route>
           <Route exact path="/medcomponent" element={<MedComponent />}></Route>
+          <Route exact path="/discover" element={<Discover />}></Route>
         </Routes>
       </Router>
     </div>

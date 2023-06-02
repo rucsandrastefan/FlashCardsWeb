@@ -32,7 +32,7 @@ const Carousel = () => {
     <div className="flex ml-8 mr-8 mt-8 justify-center ">
       <Slider {...settings} className="flex w-4/5 justify-center space-x-4 color-black">
         <div className="flex justify-center bg-[#9fa0ff] py-8 rounded-xl hover:bg-[#babbff] border-x-4  ">
-          <Link to="/Boards">
+          <Link to="/discover">
             {" "}
             <IconContext.Provider value={{ size: 50, color: "white" }}>
               <div className="w-full flex justify-center">
@@ -59,20 +59,7 @@ const Carousel = () => {
           </p>
         </div>
 
-        <div className="bg-[#9fa0ff] p-8 rounded-xl hover:bg-[#babbff] border-x-4">
-          <Link to="/SavedCards">
-            <IconContext.Provider value={{ size: 50, color: "white" }}>
-              <div className="w-full flex justify-center">
-                <TbBookmark />
-              </div>
-            </IconContext.Provider>
-
-            <h3 className="text-center text-3xl font-bold text-white ">Saved Cards</h3>
-            <p className="text-center text-xl p-4 text-[#e5e6e5]">
-              Practice your saved flashcards!
-            </p>
-          </Link>
-        </div>
+       
         <div className="flex justify-center bg-[#9fa0ff] p-8 rounded-xl hover:bg-[#babbff] border-x-4">
           <Link to="/Boards">
             <IconContext.Provider value={{ size: 50, color: "white" }}>

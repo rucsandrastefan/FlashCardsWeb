@@ -13,95 +13,124 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const MainPage = () => {
- 
   return (
     <div>
       <Navbar />
       <SearchBar />
       <Carousel />
-      
+
       <div className="grid grid-cols-3 gap-8 px-24 mt-16">
-        <motion.div whileHover={{ scale: 0.95 }}  > <Link to="/historycomponent"><div
-          className="flex align-middle items-center bg-white h-24 rounded-xl "
-          
-        >
-          <IconContext.Provider value={{ size: 45, color: "#9fa0ff" }}>
-            <div className="flex pl-8 ">
-              {" "}
-              <FaCrown />
+        <motion.div whileHover={{ scale: 0.95 }}>
+          {" "}
+          <Link to="/historycomponent">
+            <div className="flex align-middle items-center bg-white h-24 rounded-xl ">
+              <IconContext.Provider value={{ size: 45, color: "#9fa0ff" }}>
+                <div className="flex pl-8 ">
+                  {" "}
+                  <FaCrown />
+                </div>
+              </IconContext.Provider>
+              <div
+                whileHover={{ scale: 0.8 }}
+                className="flex justify-center items-center flex-1"
+              >
+                <p className="font-bold text-2xl text-center text-[#9fa0ff]">
+                  History
+                </p>
+              </div>
             </div>
-          </IconContext.Provider>
-          <div whileTap={{ scale: 0.8 }}  className="flex justify-center items-center flex-1">
-            <p className="font-bold text-2xl text-center text-[#9fa0ff]">
-              History
-            </p>
-          </div>
-        </div></Link></motion.div>
-     <motion.div whileHover={{ scale: 0.95 }}> <Link to="/artcomponent"><div className="flex justify-center items-center bg-white h-24 rounded-xl ">
-          <IconContext.Provider value={{ size: 45, color: "#9fa0ff" }}>
-            <div className="flex pl-8 ">
-              {" "}
-              <BsPostageHeart />
+          </Link>
+        </motion.div>
+        <motion.div whileHover={{ scale: 0.95 }}>
+          {" "}
+          <Link to="/artcomponent">
+            <div className="flex justify-center items-center bg-white h-24 rounded-xl ">
+              <IconContext.Provider value={{ size: 45, color: "#9fa0ff" }}>
+                <div className="flex pl-8 ">
+                  {" "}
+                  <BsPostageHeart />
+                </div>
+              </IconContext.Provider>
+              <div className="flex justify-center items-center flex-1">
+                <p className="font-bold text-2xl text-center text-[#9fa0ff]">
+                  Art
+                </p>
+              </div>
             </div>
-          </IconContext.Provider>
-          <div className="flex justify-center items-center flex-1">
-            <p className="font-bold text-2xl text-center text-[#9fa0ff]">Art</p>
-          </div>
-        </div></Link></motion.div>
-       <motion.div  whileHover={{ scale: 0.95 }}><Link to = '/mathcomponent'><div className="flex justify-center items-center bg-white h-24 rounded-xl ">
-          <IconContext.Provider value={{ size: 45, color: "#9fa0ff" }}>
-            <div className="flex pl-8 ">
-              {" "}
-              <BiMath />
+          </Link>
+        </motion.div>
+        <motion.div whileHover={{ scale: 0.95 }}>
+          <Link to="/mathcomponent">
+            <div className="flex justify-center items-center bg-white h-24 rounded-xl ">
+              <IconContext.Provider value={{ size: 45, color: "#9fa0ff" }}>
+                <div className="flex pl-8 ">
+                  {" "}
+                  <BiMath />
+                </div>
+              </IconContext.Provider>
+              <div className="flex justify-center items-center flex-1">
+                <p className="font-bold text-2xl text-center text-[#9fa0ff]">
+                  Math
+                </p>
+              </div>
             </div>
-          </IconContext.Provider>
-          <div className="flex justify-center items-center flex-1">
-            <p className="font-bold text-2xl text-center text-[#9fa0ff]">
-              Math
-            </p>
-          </div>
-        </div></Link></motion.div>
-        <motion.div  whileHover={{ scale: 0.95 }}> <Link to = "/moviescomponent"><div className="flex justify-center items-center bg-white h-24 rounded-xl ">
-          <IconContext.Provider value={{ size: 45, color: "#9fa0ff" }}>
-            <div className="flex pl-8 ">
-              {" "}
-              <MdLocalMovies />
+          </Link>
+        </motion.div>
+        <motion.div whileHover={{ scale: 0.95 }}>
+          {" "}
+          <Link to="/moviescomponent">
+            <div className="flex justify-center items-center bg-white h-24 rounded-xl ">
+              <IconContext.Provider value={{ size: 45, color: "#9fa0ff" }}>
+                <div className="flex pl-8 ">
+                  {" "}
+                  <MdLocalMovies />
+                </div>
+              </IconContext.Provider>
+              <div className="flex justify-center items-center flex-1">
+                <p className="font-bold text-2xl text-center text-[#9fa0ff]">
+                  Movies
+                </p>
+              </div>
             </div>
-          </IconContext.Provider>
-          <div className="flex justify-center items-center flex-1">
-            <p className="font-bold text-2xl text-center text-[#9fa0ff]">
-              Movies
-            </p>
-          </div>
-        </div></Link></motion.div>
-        <motion.div  whileHover={{ scale: 0.95 }}> <Link to ="/literaturecomponent"> <div className="flex justify-center items-center bg-white h-24 rounded-xl ">
-          <IconContext.Provider value={{ size: 45, color: "#9fa0ff" }}>
-            <div className="flex pl-8 ">
-              {" "}
-              <BiBook />
+          </Link>
+        </motion.div>
+        <motion.div whileHover={{ scale: 0.95 }}>
+          {" "}
+          <Link to="/literaturecomponent">
+            {" "}
+            <div className="flex justify-center items-center bg-white h-24 rounded-xl ">
+              <IconContext.Provider value={{ size: 45, color: "#9fa0ff" }}>
+                <div className="flex pl-8 ">
+                  {" "}
+                  <BiBook />
+                </div>
+              </IconContext.Provider>
+              <div className="flex justify-center items-center flex-1">
+                <p className="font-bold text-2xl text-center text-[#9fa0ff]">
+                  Literature
+                </p>
+              </div>
             </div>
-          </IconContext.Provider>
-          <div className="flex justify-center items-center flex-1">
-            <p className="font-bold text-2xl text-center text-[#9fa0ff]">
-              Literature
-            </p>
-          </div>
-        </div></Link></motion.div>
-        <motion.div  whileHover={{ scale: 0.95 }}> <Link to="/medcomponent"><div className="flex justify-center items-center bg-white h-24 rounded-xl ">
-          <IconContext.Provider value={{ size: 41, color: "#9fa0ff" }}>
-            <div className="flex pl-8 ">
-              {" "}
-              <FaNotesMedical />
+          </Link>
+        </motion.div>
+        <motion.div whileHover={{ scale: 0.95 }}>
+          {" "}
+          <Link to="/medcomponent">
+            <div className="flex justify-center items-center bg-white h-24 rounded-xl ">
+              <IconContext.Provider value={{ size: 41, color: "#9fa0ff" }}>
+                <div className="flex pl-8 ">
+                  {" "}
+                  <FaNotesMedical />
+                </div>
+              </IconContext.Provider>
+              <div className="flex justify-center items-center flex-1">
+                <p className="font-bold text-2xl text-center text-[#9fa0ff]">
+                  Med
+                </p>
+              </div>
             </div>
-          </IconContext.Provider>
-          <div className="flex justify-center items-center flex-1">
-            <p className="font-bold text-2xl text-center text-[#9fa0ff]">
-              Med 
-            </p>
-          </div>
-        </div></Link></motion.div>
-      
-        
+          </Link>
+        </motion.div>
       </div>
     </div>
   );

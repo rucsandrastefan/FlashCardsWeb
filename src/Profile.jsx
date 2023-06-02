@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { AiFillSetting } from "react-icons/ai";
 import { IconContext } from "react-icons";
+import { getAuth } from "firebase/auth";
 
-const ProfilePage = () => {
-  const [username, setUsername] = useState("John Doe");
-  const [email, setEmail] = useState("johndoe@gmail.com");
+const Profile = () => {
+  const auth = getAuth();
+  const user = auth.currentUser;
 
   const recentlyViewedBoards = [
     {
@@ -42,8 +43,10 @@ const ProfilePage = () => {
           <div className="flex flex-col justify-center items-center align-center mb-4">
             <FaUserCircle className="h-16 w-16 text-white mb-2" />
             <div className="flex flex-col justify-center items-center">
-              <p className="text-xl font-semibold text-white mb-2">John Doe</p>
-              <p className="text-white text-sm">johndoe@example.com</p>
+              <p className="text-xl font-semibold text-white mb-2">
+                {user.displayName}
+              </p>
+              <p className="text-white text-sm">{user.email}</p>
             </div>
           </div>
         </div>
@@ -70,4 +73,4 @@ const ProfilePage = () => {
   );
 };
 
-export default ProfilePage;
+export default Profile;

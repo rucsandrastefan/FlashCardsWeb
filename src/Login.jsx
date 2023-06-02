@@ -46,9 +46,9 @@ const Login = () => {
   return (
     <div>
       <Navbar />
-      <div class="min-h-screen  py-40 bg-[#e5e6e5] shadow-lg ">
-        <div class="container mx-auto place-self-center ">
-          <div class="flex flex-col  w-10/12 lg:w-3/12 bg-[#9fa0ff] rounded-xl mx-auto shadow-lg  p-8">
+      <div className="min-h-screen  pt-16 bg-[#e5e6e5] shadow-lg ">
+        <div className="container mx-auto place-self-center ">
+          <div className="flex flex-col  w-10/12 lg:w-3/12 bg-[#9fa0ff] rounded-xl mx-auto shadow-lg p-8">
             <h1 className="text-white text-3xl font-bold">Memo.</h1>
             <p className="pt-3 text-white font-semibold text-xl">
               Welcome Back
@@ -68,13 +68,13 @@ const Login = () => {
             </div>
 
             <div>
-              <div class="mt-5">
+              <div className="mt-5">
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="E-mail"
-                  class="border border-[#e5e6e5] py-1 px-2 w-full rounded-lg text-[#a6a6a6]"
+                  className="border border-[#e5e6e5] py-1 px-2 w-full rounded-lg text-[#a6a6a6]"
                 />
               </div>
               <div className="justify-center mt-3 rounded-lg">
@@ -95,11 +95,11 @@ const Login = () => {
                   </button>
                 </div>
               </div>
-              <div class="mt-8">
+              <div className="mt-8">
                 <motion.button
                   whileHover={{ scale: 1.03, transition: { duration: 0.1 } }}
                   whileTap={{ scale: 1 }}
-                  class="w-full bg-white py-3 text-center text-[#9fa0ff] rounded-lg font-semibold"
+                  className="w-full bg-white py-3 text-center text-[#9fa0ff] rounded-lg font-semibold"
                   onClick={() => handleLogin()}
                 >
                   Log In

@@ -41,7 +41,7 @@ const NewFlashcardModal = ({
     >
       <form
         onSubmit={handleSubmit}
-        className="w-2/4 h-500 bg-white rounded-xl p-8 flex flex-col items-center"
+        className="w-3/4 h-500 bg-white rounded-xl p-8 flex flex-col items-center"
       >
         <label htmlFor="question" className="text-[#8e94f2] font-bold text-xl ">
           Question:
@@ -51,7 +51,7 @@ const NewFlashcardModal = ({
           type="text"
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
-          className="border-2 border-gray-300 rounded-md py-2 px-3 mt-4 mb-6 w-3/4 "
+          className="flex border-2 border-gray-300 rounded-md py-2 px-3 mt-4 mb-6 w-full "
         />
         <label htmlFor="answer" className="text-[#8e94f2] font-bold text-xl ">
           Answer:
@@ -60,7 +60,7 @@ const NewFlashcardModal = ({
           type="text"
           value={answer}
           onChange={(e) => setAnswer(e.target.value)}
-          className="border-2 border-gray-300 rounded-md py-2 px-3 mt-4 mb-6 w-3/4 "
+          className="flex border-2 border-gray-300 rounded-md py-2 px-3 mt-4 mb-6 w-full "
         />
         <div className="flex justify-center space-x-4">
           <button

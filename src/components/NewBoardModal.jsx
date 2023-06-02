@@ -3,6 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import Modal from "react-modal";
 import { auth, db } from "../lib/firebase";
 import { addDoc, collection } from "firebase/firestore";
+import { createBoard } from "../lib/database";
 
 const NewBoardModal = ({ showModal, setShowModal, handleCreateBoard }) => {
   const [user] = useAuthState(auth);
@@ -16,10 +17,7 @@ const NewBoardModal = ({ showModal, setShowModal, handleCreateBoard }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (newBoardName.trim() !== "") {
-      await addDoc(collection(db, "boards"), {
-        userId: user.uid,
-        name: newBoardName,
-      });
+      await createBoard(user.uid, newBoardName);
       handleCloseModal();
     }
   };

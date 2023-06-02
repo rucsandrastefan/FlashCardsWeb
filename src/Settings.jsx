@@ -1,49 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import { AiOutlineEdit } from "react-icons/ai";
 import { IconContext } from "react-icons";
 import SentModal from "./components/SentModal";
 import { BsSend } from "react-icons/bs";
 import EditNameModal from "./components/EditNameModal";
-import EditEmailModal from "./components/EditEmailModal";
+import { getFirestore, collection } from "firebase/firestore";
+import { useCollection } from "react-firebase-hooks/firestore";
+import { app, auth } from "./lib/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+
 import DeleteAccountButton from "./components/DeleteAccountButton";
 import LogOutButton from "./components/LogOutButton";
+import { getAuth } from "firebase/auth";
+import { updateUserDisplayName } from "./lib/user";
 
 const Settings = () => {
+  const [user, _] = useAuthState(auth);
+
   const [showModal, setShowModal] = useState(false);
 
   const handleSendMessage = (e) => {
     e.preventDefault();
     setShowModal(true);
   };
-  const [name, setName] = useState("John Doe");
-  const [email, setNewEmail] = useState("johndoe@gmail.com");
+
   const [isEditingName, setIsEditingName] = useState(false);
-  const [isEditingEmail, setIsEditingEmail] = useState(false);
 
   const handleEditName = () => {
     setIsEditingName(true);
   };
 
-  const handleSaveNameChanges = (newName) => {
-    setName(newName);
+  const handleSaveNameChanges = async (newFirstname, newSurname) => {
+    await updateUserDisplayName(user, newFirstname, newSurname);
     alert("Changes saved");
     handleCloseModal();
+    location.reload();
   };
 
   const handleCloseModal = () => {
     setIsEditingName(false);
   };
 
-  const handleEditEmail = () => {
-    setIsEditingEmail(true);
-  };
-
-  const handleSaveEmailChanges = (newEmail) => {
-    setNewEmail(newEmail);
-    alert("Changes saved");
-    handleCloseModal2();
-  };
   const handleCloseModal2 = () => {
     setIsEditingEmail(false);
   };
@@ -61,13 +59,15 @@ const Settings = () => {
           <form className="bg-white rounded-xl p-8 flex flex-col">
             <label
               className="block text-gray-700 font-bold mb-2"
-              htmlFor="email"
+              htmlFor="name"
             >
               Name
             </label>
             <div className="relative mb-4">
-              <div class="relative rounded-md border-2 border-gray-200 py-2 px-2">
-                <span class="ml-3 text-gray-500 ">{name}</span>
+              <div className="relative rounded-md border-2 border-gray-200 py-2 px-2">
+                <span className="ml-3 text-gray-500 ">
+                  {user ? user.displayName : "Name"}
+                </span>
               </div>
               <button
                 className="absolute right-0 top-0 bottom-0 w-10 h-full  rounded-r-md border-gray-200"
@@ -81,7 +81,7 @@ const Settings = () => {
             </div>
             {isEditingName && (
               <EditNameModal
-                currentName={name}
+                currentName={user?.displayName}
                 onSaveChanges={handleSaveNameChanges}
                 onCloseModal={handleCloseModal}
               />
@@ -95,38 +95,10 @@ const Settings = () => {
               </label>
 
               <div className="relative mb-4">
-                <div class="relative rounded-md border-2 border-gray-200 py-2 px-2">
-                  <span class="ml-3 text-gray-500 ">{email}</span>
-                </div>
-                <button
-                  className="absolute right-0 top-0 bottom-0 w-10 h-full  rounded-r-md border-gray-200"
-                  type="button"
-                  onClick={handleEditEmail}
-                >
-                  <IconContext.Provider value={{ color: "gray", size: "20" }}>
-                    <AiOutlineEdit />
-                  </IconContext.Provider>
-                </button>
-              </div>
-              {isEditingEmail && (
-                <EditEmailModal
-                  currentEmail={email}
-                  onSaveChanges={handleSaveEmailChanges}
-                  onCloseModal={handleCloseModal2}
-                />
-              )}
-            </div>
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 font-bold mb-2"
-                htmlFor="password"
-              >
-                Password
-              </label>
-              <div className="relative mb-4">
-                {" "}
-                <div class="relative rounded-md border-2 border-gray-200 py-2 px-2">
-                  <span class="ml-3 text-gray-500 ">*******</span>
+                <div className="relative rounded-md border-2 border-gray-200 py-2 px-2">
+                  <span className="ml-3 text-gray-500 ">
+                    {user ? user.email : "something@email.com"}
+                  </span>
                 </div>
               </div>
             </div>

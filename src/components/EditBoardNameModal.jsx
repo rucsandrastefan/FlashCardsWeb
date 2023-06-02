@@ -1,34 +1,34 @@
 import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 
-const EditFlashcardModal = ({
-  flashcard,
+const EditBoardNameModal = ({
+  id,
+  board,
   open,
   handleClose,
   handleDelete,
   handleUpdate,
 }) => {
-  const [question, setQuestion] = useState(flashcard?.question);
-  const [answer, setAnswer] = useState(flashcard?.answer);
+  const [boardName, setBoardName] = useState(board.name);
+
+  // console.log(board);
 
   const onUpdate = () => {
     handleUpdate({
-      id: flashcard.id,
-      question,
-      answer,
+      id: id,
+      name: boardName,
     });
   };
 
   const onDelete = () => {
-    handleDelete(flashcard.id);
+    handleDelete(id);
   };
 
   useEffect(() => {
-    if (flashcard) {
-      setQuestion(flashcard.question);
-      setAnswer(flashcard.answer);
+    if (board) {
+      setBoardName(board.name);
     }
-  }, [flashcard]);
+  }, [board]);
 
   return (
     <Modal
@@ -40,33 +40,18 @@ const EditFlashcardModal = ({
           <label
             htmlFor="new-board-name"
             className="flex text-[#8e94f2] font-bold text-xl justify-center "
+          >
+            Name:
+          </label>
+          <input
+            id="new-board-name"
+            type="text"
+            value={boardName}
+            onChange={(e) => setBoardName(e.target.value)}
+            className="flex justify-center border-2 border-gray-300 rounded-md py-2 px-3 mt-4 mb-6 w-full "
+          />
+        </div>
 
-          >
-            Question:
-          </label>
-          <input
-            id="new-board-name"
-            type="text"
-            value={question}
-            onChange={(e) => setQuestion(e.target.value)}
-            className="flex justify-center border-2 border-gray-300 rounded-md py-2 px-3 mt-4 mb-6 w-full "
-          />
-        </div>
-        <div  className="w-full">
-          <label
-            htmlFor="new-board-name"
-            className="flex justify-center text-[#8e94f2] font-bold text-xl "
-          >
-            Answer:
-          </label>
-          <input
-            id="new-board-name"
-            type="text"
-            value={answer}
-            onChange={(e) => setAnswer(e.target.value)}
-            className="flex justify-center border-2 border-gray-300 rounded-md py-2 px-3 mt-4 mb-6 w-full "
-          />
-        </div>
         <div className="flex justify-center space-x-8 mt-4">
           <button
             type="submit"
@@ -96,4 +81,4 @@ const EditFlashcardModal = ({
   );
 };
 
-export default EditFlashcardModal;
+export default EditBoardNameModal;

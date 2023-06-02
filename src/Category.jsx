@@ -5,25 +5,12 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { getFlashcardsForCategory } from "./lib/database";
 //ii dinamic, pe orice category as merge imi displayuie ce am pe pagina asta.Pot sa copiez din flashcards designul si functiile de la next previous.
 
-const flashcardConvertor = {
-  fromFirestore(snapshot, options) {
-    const data = snapshot.data(options);
-    return {
-      id: snapshot.id,
-      ...data,
-    };
-  },
-};
 const Category = () => {
   const { category } = useParams();
-  const [flashcards, loading, error] = useCollectionData(
-    query(
-      collection(db, "constant_flashcards").withConverter(flashcardConvertor),
-      where("category", "==", category)
-    )
-  );
+  const [flashcards, loading, error] = getFlashcardsForCategory(category);
   const [shuffled, setShuffled] = useState([]);
   const [activeFlashcard, setActiveFlashcard] = useState();
   const [viewMode, setViewMode] = useState("question");
@@ -66,7 +53,6 @@ const Category = () => {
       setShuffled(shuffledCards);
     }
   }, [flashcards, shuffled]);
-  
 
   useEffect(() => {
     if (viewMode === "answer") {
@@ -89,12 +75,12 @@ const Category = () => {
   return (
     <div>
       <Navbar></Navbar>
-    
-        <div  className="flex mt-20 justify-center h-screen bg-[#e5e6e5]">
-           <div className="relative w-2/5 h-3/5 rounded-md bg-white shadow-md p-6 flex flex-col justify-center items-center">
+
+      <div className="flex mt-20 justify-center h-screen bg-[#e5e6e5]">
+        <div className="relative w-2/5 h-3/5 rounded-md bg-white shadow-md p-6 flex flex-col justify-center items-center">
           <div className="absolute top-0 left-0 w-full h-full  rotate-2 bg-[#8e94f2] opacity-60 rounded-md"></div>
-   
-           <div
+
+          <div
             className="flip-card w-full h-full relative"
             style={{
               transition: "transform 0.5s ease",
@@ -111,7 +97,7 @@ const Category = () => {
                     toggleViewMode();
                   }}
                 >
-                  <h1 className="text-2xl font-bold mb-4">
+                  <h1 className="text-2xl font-bold mb-4 p-4">
                     {activeFlashcard?.question}
                   </h1>
                 </button>
@@ -125,7 +111,7 @@ const Category = () => {
                   }}
                 >
                   <p
-                    className="text-lg"
+                    className="text-lg p-4"
                     style={{
                       direction: "ltr",
                       transform: "rotateY(180deg)",
@@ -138,9 +124,11 @@ const Category = () => {
             </div>
           </div>
         </div>
-        </div>
-   
-      <div className="flex justify-center"> <div className="flex items-center justify-between absolute bottom-12 space-x-8">
+      </div>
+
+      <div className="flex justify-center">
+        {" "}
+        <div className="flex items-center justify-between absolute bottom-12 space-x-8">
           <div className="bg-white p-4 rounded-xl">
             <button
               className="flex items-center text-[#8e94f2] hover:text-[#babbff]"
@@ -158,8 +146,8 @@ const Category = () => {
               <IoIosArrowForward className="ml-1" />
             </button>
           </div>
-        </div></div>
-         
+        </div>
+      </div>
     </div>
   );
 };
