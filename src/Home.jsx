@@ -5,6 +5,7 @@ import Newsletter from "./components/Newsletter";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./lib/firebase";
 import { useNavigate } from "react-router-dom";
+
 const Home = () => {
   const navigate = useNavigate();
   const [user, loading] = useAuthState(auth);
@@ -20,10 +21,9 @@ const Home = () => {
   }
 
   return (
-    <div>
+    <div className="flex-col h-screen overflow-hidden bg-[url('/img/backgr.png')]">
       <Navbar />
       <Hero />
-      <Newsletter />
     </div>
   );
 };

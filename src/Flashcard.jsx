@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, Link } from "react-router-dom";
+import { useParams} from "react-router-dom";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { collection, query, where, orderBy } from "firebase/firestore";
 import { db } from "./lib/firebase";
@@ -53,7 +53,7 @@ const Flashcards = () => {
       setActiveFlashcard(shuffled[idx + 1]);
     }
   };
-
+ 
   const toggleViewMode = () => {
     console.log("Toggle view mode");
     if (activeFlashcard && activeFlashcard.answer) {
@@ -97,13 +97,13 @@ const Flashcards = () => {
     <div className="min-h-screen">
       <Navbar></Navbar>
       <div className="flex mt-20 justify-center h-screen bg-[#e5e6e5]">
-        <div className="relative w-2/5 h-3/5 rounded-md bg-white shadow-md p-6 flex flex-col justify-center items-center">
-          <div className="absolute top-0 left-0 w-full h-full  rotate-2 bg-[#8e94f2] opacity-60 rounded-md"></div>
+        <div className="relative w-3/5 h-3/5 rounded-md bg-white shadow-md p-6 flex flex-col justify-center items-center">
+          <div className="absolute top-0 left-0 w-full h-full  bg-[#8e94f2] opacity-60 rounded-md"></div>
 
           <div
             className="flip-card w-full h-full relative"
             style={{
-              transition: "transform 0.5s ease",
+              transition: "transform 0.5s",
               transformStyle: "preserve-3d",
               transform: viewMode === "answer" ? "rotateY(180deg)" : "",
             }}

@@ -8,7 +8,7 @@ import { AiOutlineEdit, AiOutlinePlus } from "react-icons/ai";
 import { BsFillPlayFill } from "react-icons/bs";
 import { IconContext } from "react-icons";
 import NewFlashcardModal from "./components/NewFlashcardModal";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import EditFlashcardModal from "./components/EditFlashcardModal";
 
 const Board = () => {
@@ -53,6 +53,40 @@ const Board = () => {
     [boardId, flashcardsValues]
   );
 
+  useEffect(() => {
+    const boardToInsert = { id: boardId, date: Date.now() };
+
+
+    console.log("id to insert", boardId);
+    const recent = localStorage.getItem("recent");
+
+    if (!recent) {
+      localStorage.setItem("recent", JSON.stringify([boardToInsert]));
+      console.log("recent doesnt exist", localStorage.getItem("recent"));
+      return;
+    }
+
+    const boards = JSON.parse(recent);
+    console.log(boards);
+
+    let idIndex = boards.findIndex((board) => board.id === boardId);
+    console.log(idIndex);
+
+    if (idIndex >= 0 && idIndex < boards.length) {
+      // console.log(...boards.splice(idIndex, 1));
+      localStorage.setItem(
+        "recent",
+        JSON.stringify([boardToInsert, ...boards.splice(idIndex, 1)])
+      );
+
+      console.log("id exists", localStorage.getItem("recent"));
+      return;
+    }
+
+    localStorage.setItem("recent", JSON.stringify([boardToInsert, ...boards]));
+    console.log("id doesnt exist", localStorage.getItem("recent"));
+  }, []);
+
   if (loading) {
     return <p>Loading</p>;
   }
@@ -60,8 +94,8 @@ const Board = () => {
   return (
     <div>
       <Navbar></Navbar>
-      <SearchBar></SearchBar>
-      <div className=" px-16 py-8 drop-shadow-md">
+      
+      <div className=" px-16 py-8 drop-shadow-md mt-8">
         <div className="bg-[#8e94f2] flex flex-col justify-between rounded-xl  ">
           <div className="flex justify-between items-center bg-white rounded-t-xl drop-shadow">
             <h1 className="font-bold text-xl p-4 px-8 text-[#babbff]">

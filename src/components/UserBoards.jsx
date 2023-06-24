@@ -5,7 +5,7 @@ import { AiOutlineEdit } from "react-icons/ai";
 
 const UserBoards = ({ userId, setSelectedBoard, setShowEditModal }) => {
   const navigate = useNavigate();
-  const [boards, loading, error] = getBoardsForUser(userId);
+  const [boards] = getBoardsForUser(userId);
 
   return (
     <ul className="flex-grow p-2">

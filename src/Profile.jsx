@@ -1,73 +1,58 @@
-import { useState, useEffect } from "react";
 import { FaUserCircle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { AiFillSetting } from "react-icons/ai";
 import { IconContext } from "react-icons";
-import { getAuth } from "firebase/auth";
+import { auth } from "./lib/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import RecentBoards from "./components/RecentBoards";
+
+
 
 const Profile = () => {
-  const auth = getAuth();
-  const user = auth.currentUser;
-
-  const recentlyViewedBoards = [
-    {
-      id: 1,
-      name: "Spanish Vocabulary",
-    },
-    {
-      id: 2,
-      name: "Chemistry Formulas",
-    },
-    {
-      id: 3,
-      name: "European History",
-    },
-  ];
+  const [user] = useAuthState(auth);
+  const navigate = useNavigate();
 
   return (
     <div>
       <Navbar />
 
-      <div className="flex pl-8 mt-8 justify-center">
-        <div className="bg-[#8e94f2] rounded-lg shadow-lg p-4 w-3/5">
-          <div className="flex justify-end ">
-            <Link to={"/settings"}>
-              <button className=" text-white ">
-                <IconContext.Provider value={{ size: 22 }}>
-                  <AiFillSetting />
-                </IconContext.Provider>
-              </button>
-            </Link>
-          </div>
-          <div className="flex flex-col justify-center items-center align-center mb-4">
-            <FaUserCircle className="h-16 w-16 text-white mb-2" />
-            <div className="flex flex-col justify-center items-center">
-              <p className="text-xl font-semibold text-white mb-2">
-                {user.displayName}
-              </p>
-              <p className="text-white text-sm">{user.email}</p>
+      <div className="flex items-center justify-center">
+        <div className="flex pl-8 mt-16 justify-center flex-col items-center w-3/5">
+          <div className="bg-[#8e94f2] rounded-lg shadow-lg p-4 w-full">
+            <div className="flex justify-end ">
+              <Link to={"/settings"}>
+                <button className=" text-white ">
+                  <IconContext.Provider value={{ size: 22 }}>
+                    <AiFillSetting />
+                  </IconContext.Provider>
+                </button>
+              </Link>
             </div>
+            <div className="flex flex-col justify-center items-center align-center mb-4">
+              <FaUserCircle className="h-16 w-16 text-white mb-2" />
+              <div className="flex flex-col justify-center items-center">
+                <p className="text-xl font-semibold text-white mb-2">
+                  {user?.displayName}
+                </p>
+                <p className="text-white text-sm">{user?.email}</p>
+              </div>
+            </div>
+          </div>
+          <div className="w-full mt-8 p-4">
+            <h2 className="text-xl text-[#8e94f2] font-bold mb-4">
+              Recently viewed
+            </h2>
+            {user && user.uid && <RecentBoards userId={user.uid} />}
+          </div>
+          <div className="flex bg-[#8e94f2] rounded-lg mt-8  hover:bg-[#babbff]">
+            
+            <button className="p-4"
+             onClick={() => navigate("/boards")}>
+              <h1 className="text-white">My boards</h1>
+            </button>
           </div>
         </div>
-      </div>
-      <div className="w-full max-w-lg mt-8 p-4">
-        <h2 className="text-xl text-[#8e94f2] font-bold mb-4">
-          Recently viewed boards
-        </h2>
-        {recentlyViewedBoards.map((board) => (
-          <div
-            key={board.id}
-            className="flex items-center p-4 rounded-md shadow-md mb-1 bg-white hover:bg-[#e5e6e5]"
-          >
-            <div>
-              <h3 className="text-base font-semibold mb-2 text-[#8e94f2]">
-                {board.name}
-              </h3>
-              <p className=" text-sm text-[#babbff]">Last viewed: 2 days ago</p>
-            </div>
-          </div>
-        ))}
       </div>
     </div>
   );

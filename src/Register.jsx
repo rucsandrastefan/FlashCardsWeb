@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
-import Newsletter from "./components/Newsletter";
 import Checkbox from "@mui/material/Checkbox";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
@@ -18,11 +17,19 @@ const Register = () => {
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState("");
 
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleRegister = async () => {
     if (password !== confirmPassword) {
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setEmailError("* Please introduce a valid email format");
       return;
     }
 
@@ -37,10 +44,10 @@ const Register = () => {
   }, [user]);
 
   return (
-    <div>
+    <div className="h-screen flex-col overflow-hidden">
       <Navbar />
 
-      <div className="min-h-screen  py-20 bg-[#e5e6e5]  ">
+      <div className="mt-4 h-full bg-[#e5e6e5]  ">
         <div className="container mx-auto place-self-center ">
           <div className="flex flex-col lg:flex-row w-10/12 lg:w-8/12 bg-[#9fa0ff] rounded-xl mx-auto shadow-lg  ">
             <div className="w-full lg:w-1/2 flex flex-col items-center justify-center p-12 bg-no-repeat bg-cover bg-center text-center">
@@ -55,7 +62,7 @@ const Register = () => {
                   whileTap={{ scale: 0.8 }}
                   whileHover={{ scale: 1.1, transition: { duration: 0.7 } }}
                   href="#"
-                  className="text-gray-700 font-semibold"
+                  className="text-white font-semibold mt-18 "
                   onClick={() => navigate("/About")}
                 >
                   {" "}
@@ -79,7 +86,7 @@ const Register = () => {
                     type="text"
                     placeholder="Firstname"
                     autoCapitalize="words"
-                    className="border border-[#e5e6e5] py-1 px-2 rounded-lg "
+                    className="border border-[#e5e6e5] py-1 px-2 rounded-lg focus:outline-none"
                   />
                   <input
                     value={surname}
@@ -89,7 +96,7 @@ const Register = () => {
                     type="text"
                     placeholder="Surname"
                     autoCapitalize="words"
-                    className="border border-[#e5e6e5] py-1 px-2 rounded-lg"
+                    className="border border-[#e5e6e5] py-1 px-2 rounded-lg focus:outline-none"
                   />
                 </div>
                 <div className="mt-5">
@@ -98,8 +105,11 @@ const Register = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     type="email"
                     placeholder="Email"
-                    className="border border-[#e5e6e5] py-1 px-2 w-full rounded-lg"
+                    className="border border-[#e5e6e5] py-1 px-2 w-full rounded-lg focus:outline-none"
                   />
+                  {emailError && (
+                    <p className="text-white mt-2 text-xs">{emailError}</p>
+                  )}
                 </div>
                 <div className="mt-5">
                   <input
@@ -108,7 +118,7 @@ const Register = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     suggested="new-password"
                     placeholder="Password"
-                    className="border border-[#e5e6e5] py-1 px-2 w-full rounded-lg"
+                    className="border border-[#e5e6e5] py-1 px-2 w-full rounded-lg focus:outline-none"
                   />
                 </div>
                 <div className="mt-5">
@@ -118,7 +128,7 @@ const Register = () => {
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     suggested="new-password"
                     placeholder="Confirm Password"
-                    className="border border-[#e5e6e5] py-1 px-2 w-full rounded-lg"
+                    className="border border-[#e5e6e5] py-1 px-2 w-full rounded-lg focus:outline-none"
                   />
                 </div>
                 <div className="mt-5  align-baseline">
@@ -151,7 +161,6 @@ const Register = () => {
           </div>
         </div>
       </div>
-      <Newsletter />
     </div>
   );
 };

@@ -7,7 +7,6 @@ import Login from "./Login";
 import MainPage from "./MainPage";
 import Profile from "./Profile";
 import Boards from "./Boards";
-import SavedCards from "./SavedCards";
 import Settings from "./Settings";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./lib/firebase";
@@ -39,7 +38,7 @@ function App() {
           <Route exact path="/boards" element={<Boards />}></Route>
           <Route exact path="/boards/:boardId" element={<Board />}></Route>
           <Route exact path="/flashcards/:category" element={<Category />} />
-          <Route exact path="/saved" element={<SavedCards />}></Route>
+          
           <Route exact path="/settings" element={<Settings />}></Route>
           <Route
             exact

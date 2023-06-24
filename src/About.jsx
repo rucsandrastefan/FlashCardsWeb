@@ -21,8 +21,8 @@ const About = () => {
           />
         </div>
 
-        <div class="w-full lg:w-3/4 items-center justify-center p-12 bg-[#9fa0ff] text-center rounded-xl container mx-auto place-self-center ">
-          <h1 class="text-white text-3xl mb-8 font-bold">Memo.</h1>
+        <div className="w-full lg:w-3/4 items-center justify-center p-12 bg-[#9fa0ff] text-center rounded-xl container mx-auto place-self-center ">
+          <h1 className="text-white text-3xl mb-8 font-bold">Memo.</h1>
           <div className="flex flex-col gap-3 text-white font-medium">
             <p >
               Welcome to Memo!<br></br> Our app is designed to make learning fun and easy
@@ -60,7 +60,7 @@ const About = () => {
         </div>
        
       </div>
-      <Newsletter />
+
     </div>
   );
 };

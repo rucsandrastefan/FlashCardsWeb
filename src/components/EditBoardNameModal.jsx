@@ -48,7 +48,7 @@ const EditBoardNameModal = ({
             type="text"
             value={boardName}
             onChange={(e) => setBoardName(e.target.value)}
-            className="flex justify-center border-2 border-gray-300 rounded-md py-2 px-3 mt-4 mb-6 w-full "
+            className="flex justify-center border-2 border-gray-300 rounded-md py-2 px-3 mt-4 mb-6 w-full focus:outline-none"
           />
         </div>
 

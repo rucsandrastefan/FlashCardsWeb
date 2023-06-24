@@ -38,7 +38,7 @@ function EditNameModal({ currentName, onSaveChanges, onCloseModal }) {
                   onChange={(e) =>
                     setFirstname(e.target.value.replace(/[^a-z]/gi, ""))
                   }
-                  className=" border-2 border-gray-200 block w-full p-2 sm:text-sm  rounded-md"
+                  className=" border-2 border-gray-200 block w-full p-2 sm:text-sm  rounded-md focus:outline-none"
                 />
                 <input
                   type="text"
@@ -46,7 +46,7 @@ function EditNameModal({ currentName, onSaveChanges, onCloseModal }) {
                   onChange={(e) =>
                     setaSurname(e.target.value.replace(/[^a-z]/gi, ""))
                   }
-                  className=" border-2 border-gray-200 block w-full p-2 sm:text-sm  rounded-md"
+                  className=" border-2 border-gray-200 block w-full p-2 sm:text-sm  rounded-md focus:outline-none"
                 />
               </div>
             </div>
@@ -54,7 +54,7 @@ function EditNameModal({ currentName, onSaveChanges, onCloseModal }) {
           <div className="mt-5 sm:mt-6 mx-20">
             <button
               type="button"
-              className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-[#babbff] text-base font-medium text-white sm:text-sm"
+              className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-[#babbff] text-base font-medium text-white sm:text-sm hover:bg-[#8e94f2]"
               onClick={handleSaveChanges}
             >
               Save changes

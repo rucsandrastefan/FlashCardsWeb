@@ -49,7 +49,7 @@ const EditFlashcardModal = ({
             type="text"
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
-            className="flex justify-center border-2 border-gray-300 rounded-md py-2 px-3 mt-4 mb-6 w-full "
+            className="flex justify-center border-2 border-gray-300 rounded-md py-2 px-3 mt-4 mb-6 w-full focus:outline-none"
           />
         </div>
         <div  className="w-full">
@@ -64,7 +64,7 @@ const EditFlashcardModal = ({
             type="text"
             value={answer}
             onChange={(e) => setAnswer(e.target.value)}
-            className="flex justify-center border-2 border-gray-300 rounded-md py-2 px-3 mt-4 mb-6 w-full "
+            className="flex justify-center border-2 border-gray-300 rounded-md py-2 px-3 mt-4 mb-6 w-full focus:outline-none"
           />
         </div>
         <div className="flex justify-center space-x-8 mt-4">

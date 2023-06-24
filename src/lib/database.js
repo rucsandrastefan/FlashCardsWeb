@@ -10,7 +10,7 @@ import {
 import { db } from "./firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 
-const convertor = {
+export const convertor = {
   fromFirestore(snapshot, options) {
     const data = snapshot.data(options);
     return {

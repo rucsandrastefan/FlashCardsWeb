@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import SearchBar from "./components/Searchbar";
-import { AiOutlineEdit, AiOutlinePlus } from "react-icons/ai";
-import { IconContext } from "react-icons";
+import { AiOutlinePlus } from "react-icons/ai";
 import NewBoardModal from "./components/NewBoardModal";
-import { useNavigate } from "react-router-dom";
 import EditBoardNameModal from "./components/EditBoardNameModal";
-import { deleteBoard, getBoardsForUser, updateBoard } from "./lib/database";
+import { deleteBoard, updateBoard } from "./lib/database";
 import { auth } from "./lib/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import UserBoards from "./components/UserBoards";
@@ -23,22 +21,19 @@ const Boards = () => {
   const handleDeleteBoard = async (boardId) => {
     await deleteBoard(boardId);
     setShowEditModal(false);
-    // Add code here to delete the board with the given ID
   };
 
   const handleUpdateBoard = async (board) => {
     const { id, ...data } = board;
     await updateBoard(id, data);
     setShowEditModal(false);
-    // Add code here to update the board with the new name
   };
 
   return (
     <div>
       <Navbar></Navbar>
-      <SearchBar></SearchBar>
-      <div className="px-16 py-8 drop-shadow-md">
-        <div className="bg-[#8e94f2] flex flex-col justify-between rounded-xl  ">
+      <div className="px-32 py-8 drop-shadow-md ">
+        <div className="bg-[#8e94f2] flex flex-col justify-between rounded-xl  mt-8">
           <div className="flex justify-between items-center bg-white rounded-t-xl drop-shadow">
             <h1 className="font-bold text-xl p-4 px-8 text-[#babbff]">
               My boards

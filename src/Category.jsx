@@ -1,7 +1,4 @@
-import { collection, query, where, orderBy } from "firebase/firestore";
-import { db } from "./lib/firebase";
 import { useParams } from "react-router-dom";
-import { useCollectionData } from "react-firebase-hooks/firestore";
 import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";

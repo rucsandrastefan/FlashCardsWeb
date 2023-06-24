@@ -109,8 +109,8 @@ const Settings = () => {
             support@memo.com or send us a message and we will try to get back as
             soon as possible.
           </p>
-          <div className="flex-1 mb-4">
-            <label
+          {/* <div className="flex-1 mb-4"> */}
+            {/* <label
               className="block text-gray-700 font-semibold mb-2"
               htmlFor="message"
             >
@@ -130,7 +130,7 @@ const Settings = () => {
                 Send Message
               </button>
             </div>
-          </div>
+          </div> */}
           <div className="max-w-screen-lg mx-auto py-4 px-6 flex justify-center">
             <DeleteAccountButton className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
               Delete Account

@@ -6,10 +6,10 @@ import { useNavigate } from "react-router-dom";
 const Contact = () => {
   const navigate = useNavigate();
   return (
-    <div>
+    <div className="h-screen flex-col overflow-hidden">
       <Navbar></Navbar>
-      <div className="flex h-screen items-center justify-center bg-[#e5e6e5]  ">
-        <div class="w-full lg:w-3/4 items-center justify-center p-12 bg-[#9fa0ff] text-center rounded-xl container mx-auto place-self-center  ">
+      <div className="flex h-screen items-center justify-center bg-[#e5e6e5]">
+        <div class="w-full lg:w-3/4 items-center justify-center p-12 bg-[#9fa0ff] text-center rounded-xl container mx-auto place-self-center mb-16">
           <h1 class="text-white text-3xl mb-8 font-bold">Contact Us.</h1>
           <div className="flex flex-col gap-3 text-white ">
             <p className="font-medium">
@@ -29,7 +29,7 @@ const Contact = () => {
               and feedback.
             </p>
             <button
-              className="font-light underline underline-offset-2 hover:text-[#e5e6e5] pt-8 text-sm "
+              className="font-normal underline underline-offset-2 hover:text-[#e5e6e5] pt-8 text-sm text-white"
               onClick={() => navigate("/")}
             >
               {" "}
@@ -38,8 +38,6 @@ const Contact = () => {
           </div>
         </div>
       </div>
-
-      <Newsletter></Newsletter>
     </div>
   );
 };
