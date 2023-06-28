@@ -19,8 +19,8 @@ const Carousel = () => {
     speed: 900,
     slidesToShow: 2,
     slidesToScroll: 2,
-    autoplay: false,
-    autoplaySpeed: 4500,
+    autoplay: true,
+    autoplaySpeed: 2500,
   };
 
   const arrowStyles = {
@@ -30,7 +30,10 @@ const Carousel = () => {
   };
   return (
     <div className="flex ml-8 mr-8 mt-8 justify-center ">
-      <Slider {...settings} className="flex w-4/5 justify-center space-x-4 color-black">
+      <Slider
+        {...settings}
+        className="flex w-4/5 justify-center space-x-4 color-black"
+      >
         <div className="flex justify-center bg-[#9fa0ff] py-8 rounded-xl hover:bg-[#babbff] border-x-4  ">
           <Link to="/discover">
             {" "}
@@ -38,9 +41,10 @@ const Carousel = () => {
               <div className="w-full flex justify-center">
                 <TbBulbFilled />
               </div>
-              
             </IconContext.Provider>
-            <h3 className="text-center text-3xl font-bold text-white ">Discover</h3>
+            <h3 className="text-center text-3xl font-bold text-white ">
+              Discover
+            </h3>
             <p className="text-center text-xl p-4 text-[#e5e6e5]">
               Navigate through hundreds of flashcards!
             </p>
@@ -53,13 +57,14 @@ const Carousel = () => {
             </div>
           </IconContext.Provider>
 
-          <h3 className="text-center text-3xl font-bold text-white ">Shuffle your cards</h3>
+          <h3 className="text-center text-3xl font-bold text-white ">
+            Shuffle your cards
+          </h3>
           <p className="text-center text-xl p-4 text-[#e5e6e5]">
             Take a short & random revision on your cards!
           </p>
         </div>
 
-       
         <div className="flex justify-center bg-[#9fa0ff] p-8 rounded-xl hover:bg-[#babbff] border-x-4">
           <Link to="/Boards">
             <IconContext.Provider value={{ size: 50, color: "white" }}>
@@ -68,11 +73,15 @@ const Carousel = () => {
               </div>
             </IconContext.Provider>
 
-            <h3 className="text-center text-3xl font-bold text-white ">Boards</h3>
-            <p className="text-center text-xl p-4 text-[#e5e6e5]"> See your boards!</p>
+            <h3 className="text-center text-3xl font-bold text-white ">
+              Boards
+            </h3>
+            <p className="text-center text-xl p-4 text-[#e5e6e5]">
+              {" "}
+              See your boards!
+            </p>
           </Link>
         </div>
-        
       </Slider>
     </div>
   );

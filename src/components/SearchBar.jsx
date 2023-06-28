@@ -43,6 +43,29 @@ function SearchBar() {
       console.error("Error searching in database:", error);
     }
   };
+  /*
+  Certainly! The provided code snippet shows a `handleSearch` function that performs a search operation in a Firestore database. Here's a breakdown of the code:
+
+1. The `handleSearch` function is defined as an asynchronous function using the `async` keyword. This allows the function to use `await` when making asynchronous calls.
+
+2. Inside the `try` block, the function constructs a Firestore query using the `searchQuery` parameter. The query is performed on the "flashcards" collection using the `collectionGroup` function,
+ which allows querying across multiple collections with the same name. The query filters documents based on the "question" field.
+
+3. Two `where` clauses are used to specify the search criteria. The first `where` clause checks if the "question" field is greater than or equal to the `searchQuery`,
+ while the second `where` clause checks if it is less than or equal to `searchQuery + "\uf8ff"`. The "\uf8ff" character is used as a placeholder to indicate an upper bound for the search query.
+
+4. The constructed query is then executed using the `getDocs` function, which retrieves the documents that match the query from the Firestore database.
+
+5. The retrieved query results are stored in the `querySnapshot` variable.
+
+6. Next, the code maps over the `querySnapshot.docs` array, extracting the data of each document using the `data()` method. The extracted data is then stored in the `results` array.
+
+7. Finally, the `setSearchResults` function is called to update the search results state with the retrieved data.
+
+8. In case of any errors during the search operation, the `catch` block will be executed, and the error will be logged to the console.
+
+Overall, this code performs a search operation in Firestore, retrieves the matching documents, and updates the search results state with the retrieved data.
+  */
 
   const handleInputChange = (e) => {
     const inputValue = e.target.value;

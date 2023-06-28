@@ -43,26 +43,26 @@ function RecentBoards({ userId }) {
     setRecentlyViewedBoards(recentBoards);
   }, [boards]);
 
-  return (
-    <div className="  ">
-      {recentlyViewedBoards.length > 0 && (
-        <div
-          key={recentlyViewedBoards[0].board.id}
-          className="flex items-center p-4 rounded-md shadow-md mb-1 bg-white hover:bg-[#e5e6e5]"
-        >
-          <div>
-            <h3 className="text-base font-semibold mb-2 text-[#8e94f2]">
-              {recentlyViewedBoards[0].board.name}
-            </h3>
-            <p className="text-sm text-[#babbff]">
-              Last viewed: {recentlyViewedBoards[0].lastViewed}
-            </p>
-          </div>
+ return (
+  <div className="  ">
+    {recentlyViewedBoards.length > 0 && (
+      <div
+        key={recentlyViewedBoards[0].board.id}
+        className="flex items-center p-4 rounded-md shadow-md mb-1 bg-white hover:bg-[#e5e6e5]"
+      >
+        <div>
+          <h3 className="text-base font-semibold mb-2 text-[#8e94f2]">
+            {recentlyViewedBoards[0].board.name}
+          </h3>
+          <p className="text-sm text-[#babbff]">
+            Last viewed: {recentlyViewedBoards[0].lastViewed}
+          </p>
         </div>
-      )}
-    </div>
-  );
-  
+      </div>
+    )}
+  </div>
+);
+
 }
 
 export default RecentBoards;
